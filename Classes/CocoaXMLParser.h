@@ -1,7 +1,7 @@
 /*
      File: CocoaXMLParser.h
  Abstract: Subclass of iTunesRSSParser that uses the Foundation framework's NSXMLParser for parsing the XML data.
-  Version: 1.1
+  Version: 1.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -51,12 +51,26 @@
 @class Song;
 
 @interface CocoaXMLParser : iTunesRSSParser {
-@private
     NSMutableString *currentString;
     Song *currentSong;
     BOOL storingCharacters;
     NSDateFormatter *parseFormatter;
+    NSMutableData *xmlData;
+    BOOL done;
+    NSURLConnection *rssConnection;
+    // The number of parsed songs is tracked so that the autorelease pool for the parsing thread can be periodically
+    // emptied to keep the memory footprint under control. 
+    NSUInteger countOfParsedSongs;
+    NSAutoreleasePool *downloadAndParsePool;
 }
+
+@property (nonatomic, retain) NSMutableString *currentString;
+@property (nonatomic, retain) Song *currentSong;
+@property (nonatomic, retain) NSDateFormatter *parseFormatter;
+@property (nonatomic, retain) NSMutableData *xmlData;
+@property (nonatomic, retain) NSURLConnection *rssConnection;
+// The autorelease pool property is assign because autorelease pools cannot be retained.
+@property (nonatomic, assign) NSAutoreleasePool *downloadAndParsePool;
 
 - (void)downloadAndParse:(NSURL *)url;
 

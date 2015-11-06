@@ -1,7 +1,7 @@
 /*
      File: AppDelegate.m
  Abstract: Adds the main UITabBarController's view to the application's window.
-  Version: 1.1
+  Version: 1.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -47,14 +47,6 @@
 
 #import "AppDelegate.h"
 #import "Statistics.h"
-
-// Class extension for private properties and methods.
-@interface AppDelegate()
-
-@property (nonatomic, retain) UIWindow *window;
-@property (nonatomic, retain) UITabBarController *tabBarController;
-
-@end
 
 @implementation AppDelegate
 

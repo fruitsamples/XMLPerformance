@@ -1,7 +1,7 @@
 /*
      File: ParserChoiceViewController.m
  Abstract: Provides an interface for choosing and running one of the two available parsers.
-  Version: 1.1
+  Version: 1.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -50,15 +50,6 @@
 #import "LibXMLParser.h"
 #import "CocoaXMLParser.h"
 
-// Class extension for private properties and methods.
-@interface ParserChoiceViewController ()
-
-@property (nonatomic, retain, readonly) UINavigationController *songsNavigationController;
-@property (nonatomic, retain, readonly) SongsViewController *songsViewController;
-@property (nonatomic, retain) NSIndexPath *parserSelection;
-
-@end
-
 @implementation ParserChoiceViewController
 
 @synthesize parserSelection, startButton;
@@ -84,7 +75,7 @@
 
 - (SongsViewController *)songsViewController {
     if (songsViewController == nil) {
-        songsViewController = [[SongsViewController alloc] initWithNibName:@"SongsView" bundle:nil];
+        songsViewController = [[SongsViewController alloc] initWithStyle:UITableViewStylePlain];
     }
     return songsViewController;
 }
@@ -106,7 +97,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *kCellIdentifier = @"MyCell";
+    static NSString * const kCellIdentifier = @"MyCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellIdentifier] autorelease];
@@ -117,9 +108,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    //[tableView cellForRowAtIndexPath:self.parserSelection].accessoryType = UITableViewCellAccessoryNone;
     self.parserSelection = indexPath;
-    //[tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [tableView reloadData];
 }

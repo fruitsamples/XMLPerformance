@@ -1,7 +1,7 @@
 /*
      File: Statistics.h
  Abstract: Collection of C functions for database storage of parser performance metrics.
-  Version: 1.1
+  Version: 1.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following

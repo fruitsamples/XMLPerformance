@@ -1,7 +1,7 @@
 /*
      File: ParserChoiceViewController.h
  Abstract: Provides an interface for choosing and running one of the two available parsers.
-  Version: 1.1
+  Version: 1.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -50,7 +50,6 @@
 @class SongsViewController;
 
 @interface ParserChoiceViewController : UIViewController {
-@private
     UINavigationController *songsNavigationController;
     SongsViewController *songsViewController;
     NSIndexPath *parserSelection;
@@ -58,6 +57,9 @@
 }
  
 @property (nonatomic, retain) IBOutlet UIButton *startButton;
+@property (nonatomic, retain, readonly) UINavigationController *songsNavigationController;
+@property (nonatomic, retain, readonly) SongsViewController *songsViewController;
+@property (nonatomic, retain) NSIndexPath *parserSelection;
 
 - (IBAction)startParser;
 

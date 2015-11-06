@@ -15,11 +15,9 @@
 		3013ACCB0E5CD0BC00DFF042 /* Stat.png in Resources */ = {isa = PBXBuildFile; fileRef = 3013ACC60E5CD0BC00DFF042 /* Stat.png */; };
 		3013ACCC0E5CD0BC00DFF042 /* XML.png in Resources */ = {isa = PBXBuildFile; fileRef = 3013ACC80E5CD0BC00DFF042 /* XML.png */; };
 		3013ADBC0E5E099600DFF042 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3013ADBA0E5E099600DFF042 /* Default.png */; };
-		303609D00E3950FB0005A5A0 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 303609CE0E3950FB0005A5A0 /* DetailView.xib */; };
 		3097D68B0E392CCC00159D5D /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3097D6870E392CCC00159D5D /* MainWindow.xib */; };
 		3097D68C0E392CCC00159D5D /* StatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3097D6890E392CCC00159D5D /* StatsView.xib */; };
 		3097D6920E392ED500159D5D /* SongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3097D6910E392ED500159D5D /* SongsViewController.m */; };
-		3097D6960E392F8E00159D5D /* SongsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3097D6940E392F8E00159D5D /* SongsView.xib */; };
 		3097D6B40E392FAD00159D5D /* ParserChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3097D6B30E392FAD00159D5D /* ParserChoiceViewController.m */; };
 		3097D6EF0E3939E700159D5D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3097D6EE0E3939E700159D5D /* CoreGraphics.framework */; };
 		3097D70A0E393EAE00159D5D /* iTunesRSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3097D7090E393EAE00159D5D /* iTunesRSSParser.m */; };
@@ -49,12 +47,10 @@
 		3013ACC90E5CD0BC00DFF042 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/XML.png; sourceTree = "<group>"; };
 		3013ACF00E5CD69000DFF042 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		3013ADBB0E5E099600DFF042 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/Default.png; sourceTree = "<group>"; };
-		303609CF0E3950FB0005A5A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailView.xib; sourceTree = "<group>"; };
 		3097D6880E392CCC00159D5D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		3097D68A0E392CCC00159D5D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/StatsView.xib; sourceTree = "<group>"; };
 		3097D6900E392ED500159D5D /* SongsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongsViewController.h; sourceTree = "<group>"; };
 		3097D6910E392ED500159D5D /* SongsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongsViewController.m; sourceTree = "<group>"; };
-		3097D6950E392F8E00159D5D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SongsView.xib; sourceTree = "<group>"; };
 		3097D6B20E392FAD00159D5D /* ParserChoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParserChoiceViewController.h; sourceTree = "<group>"; };
 		3097D6B30E392FAD00159D5D /* ParserChoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParserChoiceViewController.m; sourceTree = "<group>"; };
 		3097D6EE0E3939E700159D5D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -161,9 +157,7 @@
 				3013ACC80E5CD0BC00DFF042 /* XML.png */,
 				3097D6870E392CCC00159D5D /* MainWindow.xib */,
 				30CB63DC0FBB5A1200E8B09E /* ParserChoiceView.xib */,
-				3097D6940E392F8E00159D5D /* SongsView.xib */,
 				3097D6890E392CCC00159D5D /* StatsView.xib */,
-				303609CE0E3950FB0005A5A0 /* DetailView.xib */,
 				30F20C500EC3618100F74FAC /* Localizable.strings */,
 			);
 			name = Resources;
@@ -232,8 +226,6 @@
 			files = (
 				3097D68B0E392CCC00159D5D /* MainWindow.xib in Resources */,
 				3097D68C0E392CCC00159D5D /* StatsView.xib in Resources */,
-				3097D6960E392F8E00159D5D /* SongsView.xib in Resources */,
-				303609D00E3950FB0005A5A0 /* DetailView.xib in Resources */,
 				30EC989A0E3A507B0042536C /* stats.sqlite in Resources */,
 				3013ACCB0E5CD0BC00DFF042 /* Stat.png in Resources */,
 				3013ACCC0E5CD0BC00DFF042 /* XML.png in Resources */,
@@ -291,14 +283,6 @@
 			name = Default.png;
 			sourceTree = "<group>";
 		};
-		303609CE0E3950FB0005A5A0 /* DetailView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				303609CF0E3950FB0005A5A0 /* en */,
-			);
-			name = DetailView.xib;
-			sourceTree = "<group>";
-		};
 		3097D6870E392CCC00159D5D /* MainWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -313,14 +297,6 @@
 				3097D68A0E392CCC00159D5D /* en */,
 			);
 			name = StatsView.xib;
-			sourceTree = "<group>";
-		};
-		3097D6940E392F8E00159D5D /* SongsView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3097D6950E392F8E00159D5D /* en */,
-			);
-			name = SongsView.xib;
 			sourceTree = "<group>";
 		};
 		30CB63DC0FBB5A1200E8B09E /* ParserChoiceView.xib */ = {

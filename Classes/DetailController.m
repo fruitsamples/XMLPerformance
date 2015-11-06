@@ -1,7 +1,7 @@
 /*
      File: DetailController.m
  Abstract: Displays details of a single parsed song.
-  Version: 1.1
+  Version: 1.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -48,21 +48,13 @@
 #import "DetailController.h"
 #import "Song.h"
 
-// Class extension for private properties and methods.
-@interface DetailController ()
-
-@property (nonatomic, retain) UITableView *tableView;
-
-@end
-
 @implementation DetailController
 
-@synthesize song, dateFormatter, tableView;
+@synthesize song, dateFormatter;
 
 - (void)dealloc {
     [dateFormatter release];
     [song release];
-    [tableView release];
     [super dealloc];
 }
 
@@ -78,7 +70,7 @@
 // When the view appears, update the title and table contents.
 - (void)viewWillAppear:(BOOL)animated {
     self.title = song.title;
-    [tableView reloadData];
+    [self.tableView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
@@ -87,7 +79,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)table cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *kCellIdentifier = @"SongDetailCell";
-    UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
+    UITableViewCell *cell = (UITableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:kCellIdentifier] autorelease];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;

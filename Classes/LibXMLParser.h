@@ -1,7 +1,7 @@
 /*
      File: LibXMLParser.h
  Abstract: Subclass of iTunesRSSParser that uses libxml2 for parsing the XML data.
-  Version: 1.1
+  Version: 1.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -76,6 +76,18 @@
     NSDateFormatter *parseFormatter;
 }
 
+@property BOOL storingCharacters;
+@property (nonatomic, retain) NSMutableData *characterBuffer;
+@property BOOL done;
+@property BOOL parsingASong;
+@property NSUInteger countOfParsedSongs;
+@property (nonatomic, retain) Song *currentSong;
+@property (nonatomic, retain) NSURLConnection *rssConnection;
+@property (nonatomic, retain) NSDateFormatter *parseFormatter;
+// The autorelease pool property is assign because autorelease pools cannot be retained.
+@property (nonatomic, assign) NSAutoreleasePool *downloadAndParsePool;
+
 - (void)downloadAndParse:(NSURL *)url;
+- (void)finishedCurrentSong;
 
 @end

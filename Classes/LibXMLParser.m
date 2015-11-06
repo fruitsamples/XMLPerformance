@@ -1,7 +1,7 @@
 /*
      File: LibXMLParser.m
  Abstract: Subclass of iTunesRSSParser that uses libxml2 for parsing the XML data.
-  Version: 1.1
+  Version: 1.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -58,24 +58,6 @@ static void errorEncounteredSAX(void * ctx, const char * msg, ...);
 
 // Forward reference. The structure is defined in full at the end of the file.
 static xmlSAXHandler simpleSAXHandlerStruct;
-
-// Class extension for private properties and methods.
-@interface LibXMLParser ()
-
-@property BOOL storingCharacters;
-@property (nonatomic, retain) NSMutableData *characterBuffer;
-@property BOOL done;
-@property BOOL parsingASong;
-@property NSUInteger countOfParsedSongs;
-@property (nonatomic, retain) Song *currentSong;
-@property (nonatomic, retain) NSURLConnection *rssConnection;
-@property (nonatomic, retain) NSDateFormatter *parseFormatter;
-// The autorelease pool property is assign because autorelease pools cannot be retained.
-@property (nonatomic, assign) NSAutoreleasePool *downloadAndParsePool;
-
-- (void)finishedCurrentSong;
-
-@end
 
 @implementation LibXMLParser
 
@@ -158,7 +140,6 @@ Disable caching so that each time we run this app we are starting with a clean s
     xmlParseChunk(context, NULL, 0, 1);
     NSTimeInterval duration = [NSDate timeIntervalSinceReferenceDate] - start;
     [self performSelectorOnMainThread:@selector(addToParseDuration:) withObject:[NSNumber numberWithDouble:duration] waitUntilDone:NO];
-    context = NULL;
     [self performSelectorOnMainThread:@selector(parseEnded) withObject:nil waitUntilDone:NO];
     // Set the condition which ends the run loop.
     done = YES; 

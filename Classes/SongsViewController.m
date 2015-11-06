@@ -1,7 +1,7 @@
 /*
      File: SongsViewController.m
  Abstract: Creates and runs an instance of the parser type chosen by the user, and displays the parsed songs in a table. Selecting a row in the table navigates to a detail view for that song.
-  Version: 1.1
+  Version: 1.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -51,25 +51,14 @@
 #import "LibXMLParser.h"
 #import "CocoaXMLParser.h"
 
-// Class extension for private properties and methods.
-@interface SongsViewController ()
-
-@property (nonatomic, retain) NSMutableArray *songs;
-@property (nonatomic, retain, readonly) DetailController *detailController;
-@property (nonatomic, retain) iTunesRSSParser *parser;
-@property (nonatomic, retain) UITableView *tableView;
-
-@end
-
 @implementation SongsViewController
 
-@synthesize songs, parser, tableView;
+@synthesize songs, parser;
 
 - (void)dealloc {
     [songs release];
     [detailController release];
     [parser release];
-    [tableView release];
 	[super dealloc];
 }
 
@@ -81,15 +70,15 @@
 
 - (DetailController *)detailController {
     if (detailController == nil) {
-        detailController = [[DetailController alloc] initWithNibName:@"DetailView" bundle:nil];
+        detailController = [[DetailController alloc] initWithStyle:UITableViewStyleGrouped];
     }
     return detailController;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSIndexPath *selectedRowIndexPath = [tableView indexPathForSelectedRow];
+    NSIndexPath *selectedRowIndexPath = [self.tableView indexPathForSelectedRow];
     if (selectedRowIndexPath != nil) {
-        [tableView deselectRowAtIndexPath:selectedRowIndexPath animated:NO];
+        [self.tableView deselectRowAtIndexPath:selectedRowIndexPath animated:NO];
     }
 }
 
@@ -103,7 +92,7 @@
         self.songs = [NSMutableArray array];
     } else {
         [songs removeAllObjects];
-        [tableView reloadData];
+        [self.tableView reloadData];
     }
     // Determine the Class for the parser
     Class parserClass = nil;
@@ -124,13 +113,13 @@
     [parser start];
 }
 
-- (NSUInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSUInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [songs count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *kCellIdentifier = @"MyCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellIdentifier] autorelease];
         cell.textLabel.font = [UIFont boldSystemFontOfSize:14.0];
@@ -153,7 +142,7 @@
 
 - (void)parserDidEndParsingData:(iTunesRSSParser *)parser {
     self.title = [NSString stringWithFormat:NSLocalizedString(@"Top %d Songs", @"Top Songs format"), [songs count]];
-    [tableView reloadData];
+    [self.tableView reloadData];
     self.navigationItem.rightBarButtonItem.enabled = YES;
     self.parser = nil;
 }
@@ -161,9 +150,9 @@
 - (void)parser:(iTunesRSSParser *)parser didParseSongs:(NSArray *)parsedSongs {
     [songs addObjectsFromArray:parsedSongs];
     // Three scroll view properties are checked to keep the user interface smooth during parse. When new objects are delivered by the parser, the table view is reloaded to display them. If the table is reloaded while the user is scrolling, this can result in eratic behavior. dragging, tracking, and decelerating can be checked for this purpose. When the parser finishes, reloadData will be called in parserDidEndParsingData:, guaranteeing that all data will ultimately be displayed even if reloadData is not called in this method because of user interaction.
-    if (!tableView.dragging && !tableView.tracking && !tableView.decelerating) {
+    if (!self.tableView.dragging && !self.tableView.tracking && !self.tableView.decelerating) {
         self.title = [NSString stringWithFormat:NSLocalizedString(@"Top %d Songs", @"Top Songs format"), [songs count]];
-        [tableView reloadData];
+        [self.tableView reloadData];
     }
 }
 

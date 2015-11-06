@@ -1,7 +1,7 @@
 /*
      File: StatsViewController.h
  Abstract: Displays statistics about each parser, including its average time to download the XML data, parse it, and the total average time from beginning the download to completing the parse.
-  Version: 1.1
+  Version: 1.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -47,11 +47,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StatsViewController : UIViewController {
-@private
+@interface StatsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
     // An outlet to the table is required to reload its contents when appropriate.
-    IBOutlet UITableView *tableView;
+    UITableView *tableView;
 }
+
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 
 // Action method for the button that resets statistics.
 - (IBAction)resetStatistics;

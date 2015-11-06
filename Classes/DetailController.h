@@ -1,7 +1,7 @@
 /*
      File: DetailController.h
  Abstract: Displays details of a single parsed song.
-  Version: 1.1
+  Version: 1.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -49,11 +49,9 @@
 
 @class Song;
 
-@interface DetailController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
-@private
+@interface DetailController : UITableViewController {
     NSDateFormatter *dateFormatter;
     Song *song;
-    IBOutlet UITableView *tableView;
 }
 
 @property (nonatomic, retain) Song *song;

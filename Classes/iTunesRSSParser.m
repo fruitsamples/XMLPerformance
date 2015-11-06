@@ -1,7 +1,7 @@
 /*
      File: iTunesRSSParser.m
  Abstract: Base class for the two parsers, this class handles interactions with a delegate object (the SongsViewController in this sample) and provides basic functionality common to both parsers.
-  Version: 1.1
+  Version: 1.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -50,18 +50,6 @@
 #import "Statistics.h"
 
 static NSUInteger kCountForNotification = 10;
-
-// Class extension for private properties and methods.
-@interface iTunesRSSParser ()
-
-@property (nonatomic, retain) NSMutableArray *parsedSongs;
-@property NSTimeInterval startTimeReference;
-@property NSTimeInterval downloadStartTimeReference;
-@property double parseDuration;
-@property double downloadDuration;
-@property double totalDuration;
-
-@end
 
 @implementation iTunesRSSParser
 

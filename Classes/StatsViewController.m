@@ -1,7 +1,7 @@
 /*
      File: StatsViewController.m
  Abstract: Displays statistics about each parser, including its average time to download the XML data, parse it, and the total average time from beginning the download to completing the parse.
-  Version: 1.1
+  Version: 1.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -50,13 +50,6 @@
 #import "CocoaXMLParser.h"
 #import "LibXMLParser.h"
 
-// Class extension for private properties and methods.
-@interface StatsViewController ()
-
-@property (nonatomic, retain) UITableView *tableView;
-
-@end
-
 @implementation StatsViewController
 
 @synthesize tableView;
@@ -76,6 +69,10 @@
     // need to be of varying heights, the rowHeight property should be used.
     tableView.allowsSelection = NO;
     tableView.rowHeight = 31;
+}
+
+- (void)viewDidUnload {
+    self.tableView = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

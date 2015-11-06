@@ -1,7 +1,7 @@
 /*
      File: iTunesRSSParser.h
  Abstract: Base class for the two parsers, this class handles interactions with a delegate object (the SongsViewController in this sample) and provides basic functionality common to both parsers.
-  Version: 1.1
+  Version: 1.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -70,7 +70,6 @@ typedef enum {
 
 
 @interface iTunesRSSParser : NSObject {
-@private
     id <iTunesRSSParserDelegate> delegate;
     NSMutableArray *parsedSongs;
     // This time interval is used to measure the overall time the parser takes to download and parse XML.
@@ -82,6 +81,12 @@ typedef enum {
 }
 
 @property (nonatomic, assign) id <iTunesRSSParserDelegate> delegate;
+@property (nonatomic, retain) NSMutableArray *parsedSongs;
+@property NSTimeInterval startTimeReference;
+@property NSTimeInterval downloadStartTimeReference;
+@property double parseDuration;
+@property double downloadDuration;
+@property double totalDuration;
 
 + (NSString *)parserName;
 + (XMLParserType)parserType;
